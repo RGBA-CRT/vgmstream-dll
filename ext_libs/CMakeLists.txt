@@ -120,7 +120,7 @@ elseif(MINGW)
 	if(USE_MPEG)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libmpg123-0.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libmpg123-0.def -l ${CMAKE_CURRENT_BINARY_DIR}/libmpg123-0.lib
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libmpg123-0.def -y ${CMAKE_CURRENT_BINARY_DIR}/libmpg123-0.lib
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libmpg123-0.def)
 		add_custom_target(libmpg123
 			DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libmpg123-0.lib)
@@ -129,7 +129,7 @@ elseif(MINGW)
 	if(USE_VORBIS)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libvorbis.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libvorbis.def -l ${CMAKE_CURRENT_BINARY_DIR}/libvorbis.lib
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libvorbis.def -y ${CMAKE_CURRENT_BINARY_DIR}/libvorbis.lib
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libvorbis.def)
 		add_custom_target(libvorbis
 			DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libvorbis.lib)
@@ -138,7 +138,7 @@ elseif(MINGW)
 	if(USE_G719)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libg719_decode.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libg719_decode.def -l ${CMAKE_CURRENT_BINARY_DIR}/libg719_decode.lib
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libg719_decode.def -y ${CMAKE_CURRENT_BINARY_DIR}/libg719_decode.lib
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libg719_decode.def)
 		add_custom_target(libg719_decode
 			DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libg719_decode.lib)
@@ -147,19 +147,19 @@ elseif(MINGW)
 	if(USE_FFMPEG AND NOT FFMPEG_LIBRARIES)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/avcodec.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/avcodec-vgmstream-59.def -l ${CMAKE_CURRENT_BINARY_DIR}/avcodec.lib -D avcodec-vgmstream-59.dll
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/avcodec-vgmstream-59.def -y ${CMAKE_CURRENT_BINARY_DIR}/avcodec.lib -D avcodec-vgmstream-59.dll
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/avcodec-vgmstream-59.def)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/avformat.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/avformat-vgmstream-59.def -l ${CMAKE_CURRENT_BINARY_DIR}/avformat.lib -D avformat-vgmstream-59.dll
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/avformat-vgmstream-59.def -y ${CMAKE_CURRENT_BINARY_DIR}/avformat.lib -D avformat-vgmstream-59.dll
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/avformat-vgmstream-59.def)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/avutil.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/avutil-vgmstream-57.def -l ${CMAKE_CURRENT_BINARY_DIR}/avutil.lib -D avutil-vgmstream-57.dll
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/avutil-vgmstream-57.def -y ${CMAKE_CURRENT_BINARY_DIR}/avutil.lib -D avutil-vgmstream-57.dll
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/avutil-vgmstream-57.def)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/swresample.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/swresample-vgmstream-4.def -l ${CMAKE_CURRENT_BINARY_DIR}/swresample.lib -D swresample-vgmstream-4.dll
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/swresample-vgmstream-4.def -y ${CMAKE_CURRENT_BINARY_DIR}/swresample.lib -D swresample-vgmstream-4.dll
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/swresample-vgmstream-4.def)
 		add_custom_target(ffmpeg
 			DEPENDS
@@ -172,7 +172,7 @@ elseif(MINGW)
 	if(USE_ATRAC9)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libatrac9.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libatrac9.def -l ${CMAKE_CURRENT_BINARY_DIR}/libatrac9.lib
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libatrac9.def -y ${CMAKE_CURRENT_BINARY_DIR}/libatrac9.lib
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libatrac9.def)
 		add_custom_target(libatrac9
 			DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libatrac9.lib)
@@ -181,11 +181,11 @@ elseif(MINGW)
 	if(USE_CELT)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libcelt-0061.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libcelt-0061.def -l ${CMAKE_CURRENT_BINARY_DIR}/libcelt-0061.lib
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libcelt-0061.def -y ${CMAKE_CURRENT_BINARY_DIR}/libcelt-0061.lib
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libcelt-0061.def)
 		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libcelt-0110.lib
 			COMMAND ${DLLTOOL}
-			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libcelt-0110.def -l ${CMAKE_CURRENT_BINARY_DIR}/libcelt-0110.lib
+			ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libcelt-0110.def -y ${CMAKE_CURRENT_BINARY_DIR}/libcelt-0110.lib
 			DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libcelt-0110.def)
 		add_custom_target(libcelt
 			DEPENDS
@@ -196,7 +196,7 @@ elseif(MINGW)
     if(USE_SPEEX)
         add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libspeex-1.lib
             COMMAND ${DLLTOOL}
-            ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libspeex-1.def -l ${CMAKE_CURRENT_BINARY_DIR}/libspeex-1.lib
+            ARGS -d ${CMAKE_CURRENT_SOURCE_DIR}/libspeex-1.def -y ${CMAKE_CURRENT_BINARY_DIR}/libspeex-1.lib
             DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/libspeex-1.def)
         add_custom_target(libspeex
             DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libspeex-1.lib)
