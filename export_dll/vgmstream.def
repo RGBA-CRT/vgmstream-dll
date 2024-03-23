@@ -1,0 +1,13 @@
+LIBRARY "vgmstream.dll"
+EXPORTS
+	init_vgmstream_std
+	reset_vgmstream_std
+	close_vgmstream_std
+	get_vgmstream_play_samples_std
+	render_vgmstream_std
+	describe_vgmstream_std
+	get_vgmstream_version
+	vgmstream_get_formats_std
+
+	vgmstream_get_basic_sound_info_std
+	vgmstream_have_loop_std

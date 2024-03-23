@@ -1,0 +1,3 @@
+[submodule "export_dll/CException"]
+	path = export_dll/CException
+	url = https://github.com/ThrowTheSwitch/CException
