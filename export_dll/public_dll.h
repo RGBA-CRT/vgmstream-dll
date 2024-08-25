@@ -1,4 +1,3 @@
-extern "C" {
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -26,4 +25,3 @@ bool __calltype vgmstream_get_basic_sound_info_std(VGMSTREAM_HANDLE handle,
                                                    int32_t *sample_rate,
                                                    int *channels);
 int __calltype vgmstream_have_loop_std(VGMSTREAM_HANDLE handle);
-}

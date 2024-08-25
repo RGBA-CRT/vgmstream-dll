@@ -1,7 +1,7 @@
 # public export dll
 set(PJNAME vgmstream-dll)
 
-set(SRCS public_dll.cpp CException/lib/CException.c)
+set(SRCS public_dll.c CException/lib/CException.c)
 if(WIN32)
 	set(SRCS ${SRCS} vgmstream.def)
 endif()

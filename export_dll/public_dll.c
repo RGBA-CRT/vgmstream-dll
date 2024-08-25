@@ -1,5 +1,4 @@
 // clang-format off
-extern "C" {
 #include <../src/vgmstream.h>
 #include <../version.h>
 
@@ -9,17 +8,14 @@ extern "C" {
 //// ref: https://yupo5656.hatenadiary.org/entry/20051215/p1
 //// ref: https://github.com/ThrowTheSwitch/CException
 #include "CException/lib/CException.h"
-}
+
 #include <stdbool.h>
 #include <windows.h>
 #include <delayimp.h>
 
-#include <stdexcept>
-
 #include "public_dll.h"
 // clang-format on
 
-extern "C" {
 void print_fail_info(unsigned dliNotify, PDelayLoadInfo pLoadInfo) {
   char dll_name[32] = {0};
   char func_name[32] = {0};
@@ -69,12 +65,7 @@ VGMSTREAM_HANDLE __calltype init_vgmstream_std(const char *const filename) {
 
   volatile CEXCEPTION_T e;
   Try {
-    // try {
     vgmstream = init_vgmstream_from_STREAMFILE(sf);
-    // } catch (std::runtime_error &e) {
-    //   printf("CATCH %s\n", e.what());
-    // } catch (std::exception &e) {
-    //   printf("CATCH2 %s\n", e.what());
   }
   Catch(e) {
     printf("May be delay load error. id=%d.\n", e);
@@ -89,7 +80,7 @@ VGMSTREAM_HANDLE __calltype init_vgmstream_std(const char *const filename) {
 }
 
 void __calltype reset_vgmstream_std(VGMSTREAM_HANDLE handle) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   reset_vgmstream(s);
 }
 
@@ -99,7 +90,7 @@ void __calltype reset_vgmstream_std(VGMSTREAM_HANDLE handle) {
 // }
 
 void __calltype close_vgmstream_std(VGMSTREAM_HANDLE handle) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   close_vgmstream(s);
 }
 
@@ -107,20 +98,20 @@ int32_t __calltype get_vgmstream_play_samples_std(double looptimes,
                                                   double fadeseconds,
                                                   double fadedelayseconds,
                                                   VGMSTREAM_HANDLE handle) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   return get_vgmstream_play_samples(looptimes, fadeseconds, fadedelayseconds,
                                     s);
 }
 
 void __calltype render_vgmstream_std(sample *buffer, int32_t sample_count,
                                      VGMSTREAM_HANDLE handle) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   render_vgmstream(buffer, sample_count, s);
 }
 
 void __calltype describe_vgmstream_std(VGMSTREAM_HANDLE handle, char *desc,
                                        int length) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   describe_vgmstream(s, desc, length);
 }
 
@@ -140,7 +131,7 @@ bool __calltype vgmstream_get_basic_sound_info_std(VGMSTREAM_HANDLE handle,
                                                    int32_t *num_samples,
                                                    int32_t *sample_rate,
                                                    int *channels) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   if (s == 0) return FALSE;
   if (num_samples != 0) *num_samples = s->num_samples;
   if (sample_rate != 0) *sample_rate = s->sample_rate;
@@ -149,22 +140,22 @@ bool __calltype vgmstream_get_basic_sound_info_std(VGMSTREAM_HANDLE handle,
 }
 
 int __calltype vgmstream_have_loop_std(VGMSTREAM_HANDLE handle) {
-  auto s = (VGMSTREAM *)handle;
+  VGMSTREAM *s = (VGMSTREAM *)handle;
   return s->loop_flag;
 }
 
 // void __calltype foce_noLoop(VGMSTREAM_HANDLE handle) {
-//   auto s = (VGMSTREAM *)handle;
+//   VGMSTREAM *s = (VGMSTREAM *)handle;
 //   s->loop_flag = 0;
 // }
 
 // int32_t __calltype get_loopSample(VGMSTREAM_HANDLE handle) {
-//   auto s = (VGMSTREAM *)handle;
+//   VGMSTREAM *s = (VGMSTREAM *)handle;
 //   return s->loop_end_sample;
 // }
 
 // void foce_loop(VGMSTREAM_HANDLE handle) {
-//   auto s = (VGMSTREAM *)handle;
+//   VGMSTREAM *s = (VGMSTREAM *)handle;
 //   /* force only if there aren't already loop points */
 //   if (!s->loop_flag) {
 //     /* this requires a bit more messing with the VGMSTREAM than I'm
@@ -185,4 +176,3 @@ int __calltype vgmstream_have_loop_std(VGMSTREAM_HANDLE handle) {
 //           s->loop_end_sample=s->num_samples;
 //       }*/
 // }
-}
